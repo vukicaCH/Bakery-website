@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
+<body onload='pocetnaOpacity()'>
    <header>
         <div class="logo-mini-site">
             <img src="images/logo.png" alt="" width='80px'>
@@ -31,7 +31,7 @@
 
    <main>
        <section class="pocetna">
-           <div class="pocetna-sadrzaj">
+           <div class="pocetna-sadrzaj hidden">
             <img src="images/logo.png" alt="" class='pocetna-logo'>
             <h1 class="pocetna-naslov">Dobrodosli</h1>
             <h3 class='pocetna-podnaslov'>u najbolju pekaru u gradu!</h3>
@@ -40,8 +40,10 @@
        </section>
 
        <section class="meni section" id='meni'>
-           <h1 class='naslov-strana'>MENI</h1>
-           <h3 class="podnaslov-strana">u ponudi</h3>
+           <div class="naslov-sekcije fade-in hidden">
+                <h1 class='naslov-strana '>MENI</h1>
+                <h3 class="podnaslov-strana ">u ponudi</h3>
+           </div>
 
            <div class="meniji">
                <div class="meni-poseban">
@@ -100,11 +102,13 @@
        </section>
 
        <section class="zasto-mi section">
-            <h1 class='naslov-strana'>Zasto</h1>
-           <h3 class="podnaslov-strana">bas mi?</h3>
+            <div class="naslov-sekcije fade-in hidden">
+                <h1 class='naslov-strana'>Zasto</h1>
+                <h3 class="podnaslov-strana">bas mi?</h3>
+            </div>
 
            <div class="zasto-mi-deo">
-               <div class="zasto-mi-tekst">
+               <div class="zasto-mi-tekst hidden">
                    <h1>Spremamo s ljubavlju</h3>
                    <p>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -113,12 +117,12 @@
                     Quod aspernatur praesentium placeat expedita omnis quibusdam at doloremque veritatis, minima obcaecati!
                     </p>
                </div>
-               <div class="zasto-mi-slika">
+               <div class="zasto-mi-slika hidden">
                </div>
            </div>
 
            <div class="zasto-mi-deo">
-               <div class="zasto-mi-tekst desno">
+               <div class="zasto-mi-tekst desno hidden">
                    <h1>Uvek sveza peciva</h3>
                    <p>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -127,12 +131,12 @@
                     Quod aspernatur praesentium placeat expedita omnis quibusdam at doloremque veritatis, minima obcaecati!
                     </p>
                </div>
-               <div class="zasto-mi-slika sveze">
+               <div class="zasto-mi-slika sveze hidden">
                </div>
            </div>
 
            <div class="zasto-mi-deo">
-               <div class="zasto-mi-tekst">
+               <div class="zasto-mi-tekst hidden">
                    <h1>Dostava 24 sata</h3>
                    <p>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -141,7 +145,7 @@
                     Quod aspernatur praesentium placeat expedita omnis quibusdam at doloremque veritatis, minima obcaecati!
                     </p>
                </div>
-               <div class="zasto-mi-slika dostava">
+               <div class="zasto-mi-slika dostava hidden">
                </div>
            </div>
 
@@ -150,11 +154,13 @@
        </section>
 
        <section class="o-nama section" id='onama'>
-            <h1 class='naslov-strana'>O nama</h1>
-            <h3 class="podnaslov-strana">ko smo mi?</h3>
+            <div class="naslov-sekcije fade-in hidden">
+                <h1 class='naslov-strana'>O nama</h1>
+                <h3 class="podnaslov-strana">ko smo mi?</h3>
+            </div>
 
             <div class="o-nama-sadrzaj">
-                <div class="o-nama-tekst">
+                <div class="o-nama-tekst fade-in-right">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Alias, aut optio. Quos quia non possimus, saepe officiis iste reiciendis ea?
                         Obcaecati aliquid ipsam odit nemo blanditiis temporibus perspiciatis similique culpa et hic atque est non, sequi,
@@ -163,7 +169,7 @@
                         totam voluptates.
                     </p>
                 </div>
-                <div class="o-nama-slike">
+                <div class="o-nama-slike hidden">
                     <img src="images/pozadina.jpg" alt="" class="o-nama-slika1">
                     <img src="images/pozadina.jpg" alt="" class="o-nama-slika2">
                 </div>
@@ -171,8 +177,10 @@
        </section>
 
        <section class="lokacije section" id='lokacije'>
-            <h1 class='naslov-strana'>Lokacije</h1>
-            <h3 class="podnaslov-strana">gde se nalazimo</h3>   
+            <div class="naslov-sekcije fade-in hidden">
+                <h1 class='naslov-strana'>Lokacije</h1>
+                <h3 class="podnaslov-strana">gde se nalazimo</h3>  
+            </div>
         
             <div class="lokacije-sadrzaj">
                 <div class="lokacija-posebna">
@@ -224,10 +232,6 @@
             </div>
        </section>
    </main>
-
-   <footer>
-       <span>Vuk Trifunovic Web Developer 2020 <a href="https://www.linkedin.com/in/vuk-trifunovi%C4%87-b5b963185/"><i class='bx bxl-linkedin'></i></a></span>
-   </footer>
 
 <script>
     let header = document.getElementsByTagName('header')[0];
@@ -298,6 +302,72 @@
         nav.classList.remove('open');
         toggle.style.opacity = '1';
     }))
+
+    let pocetnaSadrzaj = document.querySelector('.pocetna-sadrzaj');
+
+    function pocetnaOpacity(){
+        let coords = pocetnaSadrzaj.getBoundingClientRect().top;
+        let hWindow = window.innerHeight;
+
+        if(coords - hWindow < -200){
+            pocetnaSadrzaj.classList.remove('hidden');
+        }
+    }
+
+    let nasloviSekcije = document.querySelectorAll('.naslov-sekcije');
+
+    function changeOpacityFade(){
+
+        nasloviSekcije.forEach(naslovSekcije =>{
+            let naslovTop = naslovSekcije.getBoundingClientRect().top;
+            let wHeight = window.innerHeight;
+
+            if(naslovTop - wHeight < -100){
+            naslovSekcije.classList.remove('fade-in');
+            naslovSekcije.classList.remove('hidden');
+            }
+        })
+    }
+
+    window.addEventListener('scroll', changeOpacityFade);
+
+    let zastoMiDelovi = document.querySelectorAll('.zasto-mi-deo');
+
+    function changeOpacityFadeZastoMi(){
+
+        zastoMiDelovi.forEach(zastoMiDeo =>{
+
+            let zastoMiDeoTop = zastoMiDeo.getBoundingClientRect().top;
+            let zastoMiTekst = zastoMiDeo.querySelector('.zasto-mi-tekst');
+            let zastoMiSlika = zastoMiDeo.querySelector('.zasto-mi-slika');
+            let wHeight = window.innerHeight;
+
+            if(zastoMiDeoTop - wHeight < -300){
+                zastoMiTekst.classList.remove('hidden');
+                zastoMiSlika.classList.remove('hidden');
+            }
+        })
+    }
+
+
+    window.addEventListener('scroll', changeOpacityFadeZastoMi);
+
+    let oNamaSadrzaj = document.querySelector('.o-nama-sadrzaj');
+    let oNamaSlike = oNamaSadrzaj.querySelector('.o-nama-slike');
+    let oNamaTekst = oNamaSadrzaj.querySelector('.o-nama-tekst');
+
+    function changeOpacityFadeoNamaSlike(){
+        let oNamaSadrzajTop = oNamaSadrzaj.getBoundingClientRect().top;
+        let wHeight = window.innerHeight;
+
+        if(oNamaSadrzajTop - wHeight < -200){
+            oNamaTekst.classList.remove('fade-in-right');
+            oNamaSlike.classList.remove('hidden');
+        }
+    }
+
+    window.addEventListener('scroll', changeOpacityFadeoNamaSlike);
+
 </script>
 </body>
 </html>
